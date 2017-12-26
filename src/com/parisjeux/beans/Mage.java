@@ -8,7 +8,7 @@ public class Mage extends Bon {
 		super();
 		this.setNom("Mage");
 		this.pv = ThreadLocalRandom.current().nextInt( 400 , 500 + 1 ); 
-		this.pm = 100;
+		this.pm = 0;
 		this.phy = 3;
 		this.spe = ThreadLocalRandom.current().nextInt( 70, 110 + 1 );
 		this.ult = ThreadLocalRandom.current().nextInt( 150 , 200 + 1 );

@@ -36,7 +36,6 @@ public class Combat extends HttpServlet {
 		Mauvais enemy = (Mauvais) session.getAttribute("enemy");
 		String attackChoice = (String) request.getParameter("combatAction");
 		InfoJeu jeu = (InfoJeu) session.getAttribute("info");
-		System.out.println(jeu);
 		Integer choice = 0;
 		
 		if (attackChoice.equals("PHY") ) {
@@ -62,12 +61,14 @@ public class Combat extends HttpServlet {
 			} else {
 				// L'IA gagne
 				session.setAttribute("gameWon", false);
-				this.getServletContext().getRequestDispatcher("/WEB-INF/gameover.jsp").forward(request, response);
+				response.sendRedirect("gameover");
+				//this.getServletContext().getRequestDispatcher("/WEB-INF/gameover.jsp").forward(request, response);
 			}
 		} else {
 			// Le joueur gagne
 			session.setAttribute("gameWon", true);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/gameover.jsp").forward(request, response);
+			response.sendRedirect("gameover");
+			//this.getServletContext().getRequestDispatcher("/WEB-INF/gameover.jsp").forward(request, response);
 		}
 	
 		//this.getServletContext().getRequestDispatcher("/WEB-INF/combat.jsp").forward(request, response);

@@ -38,6 +38,15 @@ public class Home extends HttpServlet {
 		String name = request.getParameter("name");
 		Bon hero = null;
 		Mauvais enemy = null;
+		InfoJeu infoJeu = null;
+		
+		if (session.getAttribute("info") == null) {
+			infoJeu = new InfoJeu();
+			System.out.println("New infoJeu generated");
+		} else {
+			infoJeu = (InfoJeu) session.getAttribute("info");
+			System.out.println("Fetch old infoJeu");
+		}
 		
 		if (heroType.equals("archer")) {
 			System.out.println("Archer selected");
@@ -59,9 +68,11 @@ public class Home extends HttpServlet {
 			enemy = new Berserker();
 		}
 		
+		infoJeu.setJoueur(hero);
+		infoJeu.setEnnemi(enemy);
 		session.setAttribute("hero", hero);
 		session.setAttribute("enemy", enemy);
-		session.setAttribute("info", new InfoJeu(hero, enemy));
+		session.setAttribute("info", infoJeu);
 		session.setAttribute("heroClass", hero.getClass().getSimpleName());
 		session.setAttribute("enemyClass", enemy.getClass().getSimpleName());
 		

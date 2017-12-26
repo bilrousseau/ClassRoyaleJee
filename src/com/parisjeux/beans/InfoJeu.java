@@ -50,7 +50,7 @@ public class InfoJeu {
 		Personnage perdant = (this.ennemi.getPv() > 0) ? this.getJoueur() : this.getEnnemi();
 
 		String combat = gagnant.getNom() + "(" + gagnant.getClass().getSimpleName() + ") a vaincu " + perdant.getNom()
-				+ "(" + perdant.getClass().getSimpleName() + ") avec " + gagnant.getPv() + " PV à la fin du combat";
+				+ "(" + perdant.getClass().getSimpleName() + ") avec " + gagnant.getPv() + " PV �la fin du combat";
 		historiqueCombat.add(combat);
 	}
 
@@ -68,18 +68,6 @@ public class InfoJeu {
 		System.out.println("Partie terminée");
 		System.out.println("Nombre de victoires : " + this.getNbVictoires());
 		System.out.println("Nombre de défaites : " + (this.getNbParties() - this.getNbVictoires()));
-	}
-
-	public void resultat() {
-		if (this.victoire()) {
-			this.gagner();
-			System.out.println(joueur.getNom() + " a gagné !!!   WAOUH !!!  Vous etes trop fort");
-		} else {
-			this.perdre();
-			System.out.println(" GAME OVER ! ! !  "+ joueur.getNom()+" t'es un GROS naze");
-		}
-		this.afficherStats();
-
 	}
 
 	public Bon getJoueur() {

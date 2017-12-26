@@ -38,16 +38,27 @@
 			</div>
 		</div>
 		
-		<div class="combat-result">
+		<div>
 			<h3>Partie terminée</h3>
-			<c:choose>
-				<c:when test="${sessionScope.gameWon}">
-					<span class="game-won">Vous avez gagné !</span>
-				</c:when>
-				<c:otherwise>
-					<span class="game-lost">Vous avez perdu...</span>
-				</c:otherwise>
-			</c:choose>
+			<p class="combat-result">
+				<c:choose>
+					<c:when test="${sessionScope.gameWon}">
+						<span class="game-won">Vous avez gagné !</span>
+					</c:when>
+					<c:otherwise>
+						<span class="game-lost">Vous avez perdu...</span>
+					</c:otherwise>
+				</c:choose>
+			</p>
+			<p class="game-result">
+				<c:out value="${gameResult}" />
+			</p>
+		</div>
+		
+		<div class="try-again">
+			<form action="/ClassRoyale/home">
+				<input type="submit" name="tryAgain" value="Recommencer">
+			</form>
 		</div>
 	</body>
 </html>

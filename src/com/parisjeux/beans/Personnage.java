@@ -20,7 +20,7 @@ abstract public class Personnage {
     protected String atkPhy(Personnage p) {
     	Double damage = this.phy * Math.random() * 2;
     	
-        p.setPv(p.getPv() - damage);
+        p.setPv((p.getPv() - damage > 0) ? p.getPv() - damage : 0);
         setPm(getPm() + getVol());
         return this.getNom() + " lance PHY sur " +p.getNom() + ", faisant "+ damage.intValue() + " de dégât.";
     }
@@ -30,7 +30,7 @@ abstract public class Personnage {
     //Diminue les points de magie de 50.
     protected String atkSpe(Personnage p) {
     	Double damage = (this.spe * Math.random() * 2) + this.phy;
-        p.setPv(p.getPv() - damage);
+    	p.setPv((p.getPv() - damage > 0) ? p.getPv() - damage : 0);
         setPm(getPm() - 50);
         
         return this.getNom() + " lance SPE sur " +p.getNom() + ", faisant "+ damage.intValue() + " de dégât.";
@@ -43,7 +43,7 @@ abstract public class Personnage {
     protected String atkUlt(Personnage p) {
     	Double damage = (this.ult * Math.random() * 2) + this.phy + this.spe;
     	
-        p.setPv(p.getPv() - damage);
+    	p.setPv((p.getPv() - damage > 0) ? p.getPv() - damage : 0);
         setPm(0);
         return this.getNom() + " lance ULT sur " +p.getNom() + ", faisant "+ damage.intValue() + " de dégât.";
 
