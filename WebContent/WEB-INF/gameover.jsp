@@ -56,8 +56,9 @@
 		</div>
 		
 		<div class="try-again">
-			<form action="/ClassRoyale/home">
+			<form action="/ClassRoyale/gameover" method="POST">
 				<input type="submit" name="tryAgain" value="Recommencer">
+				<input type="submit" name="endGame" value="Quitter">
 			</form>
 		</div>
 	</body>

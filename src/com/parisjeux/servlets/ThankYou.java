@@ -8,35 +8,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.parisjeux.beans.InfoJeu;
-
-@WebServlet("/gameover")
-public class GameOver extends HttpServlet {
+@WebServlet("/thankyou")
+public class ThankYou extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public GameOver() {
+    public ThankYou() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		InfoJeu infoJeu = (InfoJeu) request.getSession().getAttribute("info");
-		if (infoJeu.victoire()) {
-			infoJeu.gagner();
-		} else {
-			infoJeu.perdre();
-		}
-		request.setAttribute("gameResult", infoJeu.getHistoriqueCombat().get(infoJeu.getHistoriqueCombat().size() - 1));
 		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/gameover.jsp").forward(request, response);
+		request.setAttribute("history", infoJeu.getHistoriqueCombat());
+		this.getServletContext().getRequestDispatcher("/WEB-INF/thankyou.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getParameter("tryAgain") != null) {
-			response.sendRedirect("home");
-		} else if (request.getParameter("endGame") != null) {
-			response.sendRedirect("thankyou");
-		} else {
-			doGet(request, response);
-		}
+		request.getSession().invalidate();
+		response.sendRedirect("home");
 	}
 
 }
