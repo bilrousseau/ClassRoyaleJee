@@ -12,6 +12,6 @@ public class Berserker extends Mauvais {
 		this.phy = 22;
 		this.spe = ThreadLocalRandom.current().nextInt(20, 40 + 1);
 		this.ult = ThreadLocalRandom.current().nextInt(30, 60 + 1);
-		this.vol = 5;
+		this.vol = 10;
 	}
 }

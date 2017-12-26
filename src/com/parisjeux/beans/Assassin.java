@@ -13,7 +13,7 @@ public class Assassin extends Mauvais {
 		this.phy = 17;
 		this.spe = ThreadLocalRandom.current().nextInt( 30, 45 + 1 );
 		this.ult = ThreadLocalRandom.current().nextInt( 70 , 100 + 1 );
-		this.vol = 15;
+		this.vol = 5;
 	
 	}
 }
