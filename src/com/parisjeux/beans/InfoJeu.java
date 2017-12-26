@@ -3,8 +3,8 @@ package com.parisjeux.beans;
 import java.util.ArrayList;
 
 public class InfoJeu {
-	private Personnage joueur;
-	private Personnage ennemi;
+	private Bon joueur;
+	private Mauvais ennemi;
 	private static Integer nbVictoires = 0;
 	private static Integer nbParties = 0;
 	private static ArrayList<String> historiqueCombat = new ArrayList<String>();
@@ -13,7 +13,7 @@ public class InfoJeu {
 		super();
 	}
 
-	public InfoJeu(Personnage joueur, Personnage ennemi) {
+	public InfoJeu(Bon joueur, Mauvais ennemi) {
 		this.joueur = joueur;
 		this.ennemi = ennemi;
 		nbParties = 0;
@@ -55,7 +55,7 @@ public class InfoJeu {
 	}
 
 	public void effacerDansHistorique(String combat) {
-		this.historiqueCombat.remove(combat);
+		historiqueCombat.remove(combat);
 	}
 
 	public void afficherHistorique() {
@@ -82,19 +82,19 @@ public class InfoJeu {
 
 	}
 
-	public Personnage getJoueur() {
+	public Bon getJoueur() {
 		return joueur;
 	}
 
-	public void setJoueur(Personnage joueur) {
+	public void setJoueur(Bon joueur) {
 		this.joueur = joueur;
 	}
 
-	public Personnage getEnnemi() {
+	public Mauvais getEnnemi() {
 		return ennemi;
 	}
 
-	public void setEnnemi(Personnage ennemi) {
+	public void setEnnemi(Mauvais ennemi) {
 		this.ennemi = ennemi;
 	}
 
@@ -122,4 +122,10 @@ public class InfoJeu {
 		historiqueCombat = historique;
 	}
 
+	@Override
+	public String toString() {
+		return "InfoJeu [joueur=" + joueur.toString() + ", ennemi=" + ennemi.toString() + "]";
+	}
+
+	
 }

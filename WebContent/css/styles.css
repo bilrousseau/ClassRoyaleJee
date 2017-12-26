@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+body {
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
+.combat-info {
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+.combat-actions, .hero-turn, .enemy-turn, .combat-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-info {
+	float: left;
+}
+
+.enemy-info {
+	float: right;
+}
