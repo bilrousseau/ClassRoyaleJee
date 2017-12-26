@@ -17,25 +17,36 @@ abstract public class Personnage {
     //Attaque physique. Prend le personnage ï¿½ attaquer en entrï¿½e. Les dï¿½gats sont calculï¿½s alï¿½atoirement.
     //Set les PV du personnage diminuï¿½.
     //Augmente les PM du personnage selon sa volontï¿½.
-    protected void atkPhy(Personnage p) {
-        p.setPv(p.getPv() - (this.phy * Math.random()) * 2);
+    protected String atkPhy(Personnage p) {
+    	Double damage = this.phy * Math.random() * 2;
+    	
+        p.setPv(p.getPv() - damage);
         setPm(getPm() + getVol());
+        return this.getNom() + " lance PHY sur " +p.getNom() + ", faisant "+ damage.intValue() + " de dégât.";
     }
 
     //Attaque spï¿½. Prend le personnage ï¿½ attaquer en entrï¿½e. Les dï¿½gats sont calculï¿½s alï¿½atoirement.
     //Set les PV du personnage diminuï¿½.
     //Diminue les points de magie de 50.
-    protected void atkSpe(Personnage p) {
-        p.setPv(p.getPv() - ((this.spe * Math.random() * 2) + this.phy));
+    protected String atkSpe(Personnage p) {
+    	Double damage = (this.spe * Math.random() * 2) + this.phy;
+        p.setPv(p.getPv() - damage);
         setPm(getPm() - 50);
+        
+        return this.getNom() + " lance SPE sur " +p.getNom() + ", faisant "+ damage.intValue() + " de dégât.";
+
     }
 
     //Attaque ult. Prend un personnage ï¿½ attaquer en entrï¿½e. Les dï¿½gats sont calculï¿½s alï¿½atoirement.
     //Set les PV du personnage diminuï¿½.
     //Set la jauge de magie ï¿½ 0.
-    protected void atkUlt(Personnage p) {
-        p.setPv(p.getPv() - ((this.ult * Math.random() * 2) + this.phy + this.spe));
+    protected String atkUlt(Personnage p) {
+    	Double damage = (this.ult * Math.random() * 2) + this.phy + this.spe;
+    	
+        p.setPv(p.getPv() - damage);
         setPm(0);
+        return this.getNom() + " lance ULT sur " +p.getNom() + ", faisant "+ damage.intValue() + " de dégât.";
+
     }
 
 
@@ -102,10 +113,11 @@ abstract public class Personnage {
     }
 
     // MÃ©thode PASSER TOUR
-    void passerTour() {
+    public String passerTour() {
         this.pm += (vol * 2);
         if (this.pm > 100)
             this.pm = 100;
+        return this.getNom() + " se concentre...";
     }
 
 
@@ -180,16 +192,17 @@ abstract public class Personnage {
     }
 
     // Effectue l'action -> attaque ou passer tour
-    public void attaquer(Personnage p, Integer choix) {
+    public String attaquer(Personnage p, Integer choix) {
         if (choix == 0) {
-            this.passerTour();
+            return this.passerTour();
         } else if (choix == 1) {
-            this.atkPhy(p);
+        	return this.atkPhy(p);
         } else if (choix == 2) {
-            this.atkSpe(p);
+            return this.atkSpe(p);
         } else if (choix == 3) {
-            this.atkUlt(p);
+            return this.atkUlt(p);
         }
+        return null;
     }
 
     public void demandeEtValidationDuNom() {

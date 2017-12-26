@@ -13,7 +13,7 @@ public class InfoJeu {
 		super();
 	}
 
-	private InfoJeu(Personnage joueur, Personnage ennemi) {
+	public InfoJeu(Personnage joueur, Personnage ennemi) {
 		this.joueur = joueur;
 		this.ennemi = ennemi;
 		nbParties = 0;
